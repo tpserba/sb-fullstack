@@ -1,4 +1,4 @@
-# sb-fullstack
+# sb-jwt
 Practice: Spring boot and JWT
 
 The aim of the project is to display some data when the user is registered and has logged in correctly.
