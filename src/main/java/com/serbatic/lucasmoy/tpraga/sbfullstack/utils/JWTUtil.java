@@ -42,9 +42,6 @@ public class JWTUtil {
      * @return
      */
     public String create(String id, String subject) {
-        System.out.println("Data to create jwt");
-        System.out.println("id: " + id);
-        System.out.println("subject : " + subject);
         // The JWT signature algorithm used to sign the token
         Algorithm algorithm = Algorithm.HMAC256("5upm(b2ahS3cUh(n!2-fnfq89fgh32fb39f39h2BAIonaoHAUABIUAB");
         String jwt = JWT.create()
@@ -86,15 +83,13 @@ public class JWTUtil {
     public String getKey(String jwt) {
         // This line will throw an exception if it is not a signed JWS (as
         // expected)
-        System.out.println("incoming jwt");
-        System.out.println(jwt);
+
         Algorithm algorithm = Algorithm.HMAC256("5upm(b2ahS3cUh(n!2-fnfq89fgh32fb39f39h2BAIonaoHAUABIUAB");
         JWTVerifier verifier = JWT.require(algorithm).withIssuer("Tom").build();
         try {
             DecodedJWT decodedJWT = verifier.verify(jwt);
             Claim claim = decodedJWT.getClaim("userId");
-            System.out.println("user id!");
-            System.out.println(claim);
+
             return claim.asString();
         } catch (JWTVerificationException e) {
             System.out.println(e.getMessage());

@@ -44,7 +44,6 @@ public class UserDaoImpl implements UserDao {
         // Y al tratar de obtener el primer valor devolverá null
         // si intentamos conseguir password de null, nos dará nullPointerException
         if (userList.isEmpty()) {
-            System.out.println("is empty");
             return null;
         }
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
@@ -52,7 +51,6 @@ public class UserDaoImpl implements UserDao {
         if (argon2.verify(hashedPassword, user.getPassword().toCharArray())) {
             return userList.get(0);
         }
-        System.out.println("argon couldn't verify");
         return null;
     }
 }
